@@ -1,0 +1,137 @@
+﻿@model Primer1.Models.Automobil
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Automobil</h4>
+<hr />
+<div class="row">
+    <div class="row">
+        <img width="200" height="150" src="@($"/Automobil/CitajSliku/{Model.AutomobilId}")" />
+    </div>
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AutomobilId" />
+            <div class="form-group">
+                <label asp-for="Marka" class="control-label"></label>
+                <input asp-for="Marka" class="form-control" />
+                <span asp-validation-for="Marka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Godiste" class="control-label"></label>
+                <input asp-for="Godiste" class="form-control" />
+                <span asp-validation-for="Godiste" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZapreminaMotora" class="control-label"></label>
+                <input asp-for="ZapreminaMotora" class="form-control" />
+                <span asp-validation-for="ZapreminaMotora" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Snaga" class="control-label"></label>
+                <input asp-for="Snaga" class="form-control" />
+                <span asp-validation-for="Snaga" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gorivo" class="control-label"></label>
+                <input asp-for="Gorivo" class="form-control" />
+                <span asp-validation-for="Gorivo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Karoserija" class="control-label"></label>
+                <input asp-for="Karoserija" class="form-control" />
+                <span asp-validation-for="Karoserija" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <div class="form-group">
+                    <label for="File1" class="control-label">Odaberi sliku</label>
+                    <input id="File1" type="file" name="odabranaSlika" class="form-control" onchange="PrikaziSliku()" accept=".jpg, .gif, .bmp" />
+                </div>
+
+                <div class="form-group">
+                    <img src="" id="img1" width="200" height="150" />
+                </div>*@
+
+            @*</div>*@
+            <div class="form-group">
+                <label asp-for="Opis" class="control-label"></label>
+                <input asp-for="Opis" class="form-control" />
+                <span asp-validation-for="Opis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cena" class="control-label"></label>
+                <input asp-for="Cena" class="form-control" />
+                <span asp-validation-for="Cena" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kontakt" class="control-label"></label>
+                <input asp-for="Kontakt" class="form-control" />
+                <span asp-validation-for="Kontakt" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" onclick="return Validacija()"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+
+        function PrikaziSliku() {
+
+
+            var File1 = document.getElementById("File1");
+            var img1 = document.getElementById("img1");
+
+            var fajlSlike = File1.files[0];
+
+
+            if (fajlSlike != null > 0 && fajlSlike.type.match(/image.*/)) {
+
+                var reader = new FileReader();
+                reader.readAsDataURL(fajlSlike);
+
+                reader.onload = function () {
+
+                    img1.src = reader.result;
+                };
+            }
+            else {
+                img1.setAttribute("src", "");
+            }
+
+        }
+        function Validacija() {
+
+            var src = $("#img1").attr("src");
+
+            if (src == "") {
+                $("#p1").html("Odaberite sliku");
+                return false;
+            }
+            else {
+                return true;
+
+            }
+        }
+    </script>
+}

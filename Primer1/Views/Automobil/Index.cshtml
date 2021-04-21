@@ -1,0 +1,100 @@
+﻿
+@model IEnumerable<Primer1.Models.Automobil>
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Resource> Localizer
+
+
+@inject IStringLocalizer<Resource> localizer
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<h1>Automobili</h1>
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        @inject SignInManager<ApplicationUser> sm
+        <div class="slika">
+
+            <img src="@($"/Automobil/CitajSliku/{item.AutomobilId}")" />
+            <p>
+
+                <a asp-action="Details" asp-route-id="@item.AutomobilId">Detalji</a> |
+                <a asp-action="Edit" asp-route-id="@item.AutomobilId">Promeni</a> |
+
+
+
+                @if (sm.IsSignedIn(User))
+                {
+                <p>
+                    <a asp-action="Delete" asp-route-id="@item.AutomobilId">Delete</a>
+                </p>
+            }
+            else
+            {
+
+                <p>
+                    Ulogujte se da bi ste mogli da obrisete oglas
+                </p>
+
+            }
+
+
+                </p>
+            </div>
+
+        }
+</div>
+
+
+
+@section styles{
+
+    <style>
+
+        div.slika {
+            width: 230px;
+            border-radius: 5px;
+            border: 1px solid red;
+            padding: 10px;
+            float: left;
+            margin: 10px;
+        }
+
+            div.slika img {
+                width: 200px;
+                height: 150px;
+                margin-bottom: 10px;
+            }
+    </style> }
+@*<td>
+
+        <a asp-action="Edit" asp-route-id="@item.AutomobilId">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.AutomobilId">Details</a> |
+
+        @inject SignInManager<ApplicationUser> sm
+
+        @if (sm.IsSignedIn(User))
+        {
+            <p>
+                <a asp-action="Delete" asp-route-id="@item.AutomobilId">Delete</a>
+            </p>
+        }
+        else
+        {
+            <p>
+                Ulogujte se da bi ste mogli da obrisete oglas
+            </p>
+
+        }
+
+    </td>*@
+
+@*<a asp-action="Edit" asp-route-id="@item.AutomobilId">Edit</a> |
+    <a asp-action="Details" asp-route-id="@item.AutomobilId">Details</a> |
+
+    @inject SignInManager<ApplicationUser> sm*@

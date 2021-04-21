@@ -1,0 +1,90 @@
+﻿@model Primer1.Models.Automobil
+
+@{
+    ViewData["Title"] = "Details";
+}
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Resource> Localizer
+
+<h1>Details</h1>
+
+<div>
+    <h4>Automobil</h4>
+
+    <hr />
+    <div class="row">
+        <img width="400" height="300" src="@($"/Automobil/CitajSliku/{Model.AutomobilId}")" />
+    </div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Marka)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Marka)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Godiste)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Godiste)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ZapreminaMotora)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ZapreminaMotora)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Snaga)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Snaga)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gorivo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gorivo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Karoserija)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Karoserija)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TipFajla)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TipFajla)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cena)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cena)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Kontakt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Kontakt)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.AutomobilId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
